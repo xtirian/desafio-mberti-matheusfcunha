@@ -5,7 +5,8 @@ Documentação do projeto criado para atender ao teste técnico enviado pela equ
 ## Conteúdo
 - Backend
   - Tecnologias usadas
-  - Inicializando o projeto  
+  - Inicializando o projeto
+  - Variaveis de ambiente  
 - Frontend
   - Tecnologias usadas
   - Inicializando o projeto
