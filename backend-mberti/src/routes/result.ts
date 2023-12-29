@@ -21,6 +21,21 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
 
 router.post("/", postController);
 
-router.put(`/`, updateController);
+router.put(`/:disciplinaId`, updateController);
+
+router.delete('/:disciplinaId', async (
+  req: Request,
+  res: Response,) => {
+
+    const {disciplinaId} = req.params;  
+
+
+    await DisciplinaModel.findOneAndDelete({_id: disciplinaId})
+
+    return res.status(200).send({
+      message: "Deleted successfully"
+    })
+  
+} )
 
 export default router;
