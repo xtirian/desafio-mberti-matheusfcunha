@@ -1,0 +1,29 @@
+@use './var' as *;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap');
+
+*, *::after, *::before{
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+}
+
+html{
+  font-size: 10px;  
+}
+
+body{
+  overflow-x: hidden;
+  height: 100vh;
+  
+  font-family: 'Montserrat', sans-serif;
+  background-color: $bg_color;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+ul > li {
+  list-style-type: none
+}
