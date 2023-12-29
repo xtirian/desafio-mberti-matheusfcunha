@@ -1,6 +1,9 @@
 import { Router, Request, Response, NextFunction } from "express";
 import DisciplinaModel from "../database/module/result.schema";
-import { postController } from "../controllers/registroController";
+
+//CONTROLLERS
+import { postController } from "../controllers/registroCreate.controller";
+import { updateController } from "../controllers/registroUpdate.controller";
 
 const router = Router();
 
@@ -18,9 +21,6 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
 
 router.post("/", postController);
 
-router.put(
-  `/:id`,
-  async (req: Request, res: Response, next: NextFunction) => {}
-);
+router.put(`/`, updateController);
 
 export default router;
