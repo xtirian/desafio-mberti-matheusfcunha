@@ -1,4 +1,4 @@
-import { Router, Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import DisciplinaModel from "../database/module/result.schema";
 import { bimestreEnum, disciplinasEnum } from "../database/module/enums";
 
@@ -47,6 +47,8 @@ export const postController = async (
       bimestre: bimestre,
       grade: nota,
     });
+
+    DisciplinaCriada.save();
 
     return res.status(200).json(DisciplinaCriada);
   } catch (error) {
