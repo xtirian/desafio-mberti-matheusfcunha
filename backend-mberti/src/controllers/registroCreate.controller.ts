@@ -50,7 +50,7 @@ export const postController = async (
 
     DisciplinaCriada.save();
 
-    return res.status(200).json(DisciplinaCriada);
+    return res.status(201).json(DisciplinaCriada);
   } catch (error) {
     console.error(error)
   }

@@ -9,8 +9,9 @@ export const updateController = async (
   next: NextFunction
 ) => {
 
-  const id = req.body.id;  
+  const {disciplinaId} = req.params;  
   const nota = req.body.grade;
+
 
   if (!nota) {
     return res.status(400).send({
@@ -27,14 +28,14 @@ export const updateController = async (
     });
   }
 
-  try {
-    const disciplinaAtualizada = await DisciplinaModel.findOneAndUpdate({id: id}, {
+  try {    
+    const disciplinaAtualizada = await DisciplinaModel.findOneAndUpdate({_id: disciplinaId}, {
       grade: nota,
     });
 
-    return res.status(200).send({
-      message: `Nota atualizada para ${nota}`
-    });
+   
+
+    return res.status(200).json(disciplinaAtualizada);
   } catch (error) {
     console.error(error)
   }
