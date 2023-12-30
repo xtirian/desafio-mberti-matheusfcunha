@@ -41,7 +41,7 @@ export const postController = async (
     });
   }
 
-  //VALIDATIONG IF IT ALREADY EXCIST
+  //VALIDATIONG IF IT ALREADY EXIST
   let checkTest = await checkDB(bimestre, disciplina);
 
   
@@ -68,8 +68,6 @@ export const postController = async (
 
 const checkDB = async (bimestre: string, disciplina: string) => {
   let filter = { name: disciplina, bimestre: bimestre };
-
-  console.log("passou aqui");
 
   try {
     if (await DisciplinaModel.findOne(filter)) {
