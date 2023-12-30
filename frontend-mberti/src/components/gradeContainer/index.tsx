@@ -27,11 +27,11 @@ const GradeContainer = () => {
         setFlagForm(false)
       }}><label className="grade_text">
         Nota:{" "} 
-        <input type="number" step={0.01}  min={0} max={10} placeholder="Nota" autoFocus={true} required />
+        <input type="number" step={0.1}  min={0} max={10} placeholder="Nota" autoFocus={true} required />
         </label>
       </form>
       : <>
-      <p className="grade_text">Nota: {Nota.toFixed(2)}</p>
+      <p className="grade_text">Nota: {Nota.toFixed(1)}</p>
       </>}
     </div>
   );
