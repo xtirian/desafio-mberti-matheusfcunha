@@ -1,29 +1,40 @@
-'use Client'
+"use client";
 import React, { useEffect, useState } from "react";
 import "./style.scss";
 import { AddButton } from "../button";
-import {SubjectCard} from "../card";
+import { SubjectCard } from "../card";
 import Modal from "@/view/modal";
+import { DataHandler } from "@/services/dataHandler";
 
 interface SubjectContainerTypes {
   selectBimestre: number;
+  apiData: [];
+  reRender: Function
 }
 
-interface SubjectDataAPI {
-  _id: string;
-  name: string;
-  bimestre: string;
-  grade: number;
-  createdAt: Date;
-  updatedAt: Date;
+interface SubjectInterface {
+  _id: string,
+  name: string,
+  grade: number,
+  createdAt: string,
+  updatedAt: string,
 }
 
-const SubjectContainer = ({ selectBimestre }: SubjectContainerTypes) => {
-  
+const SubjectContainer = ({
+  selectBimestre,
+  apiData,
+  reRender
+}: SubjectContainerTypes) => {
+  //
 
-  const disciplinasBimestre: SubjectDataAPI[] = [];
+  const [Data, setData] = useState(apiData)
 
 
+  useEffect(() => {
+    setData(apiData)
+  }, [apiData]);
+
+  // MODAL
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -35,12 +46,8 @@ const SubjectContainer = ({ selectBimestre }: SubjectContainerTypes) => {
   };
 
 
-  useEffect(() => {
-    console.log(isModalOpen)
-  
-    
-  }, [isModalOpen])
-  
+
+ 
 
   return (
     <section className="subject_container">
@@ -50,13 +57,25 @@ const SubjectContainer = ({ selectBimestre }: SubjectContainerTypes) => {
       </header>
 
       <div className="cards_grid">
-        <SubjectCard />
-        {disciplinasBimestre.map((disciplina) => (
-          <SubjectCard />
+        {Data.map((disciplina: SubjectInterface, index) => (
+          <SubjectCard
+            key={`${disciplina.name} ${index}`}
+            name={disciplina.name}
+            nota={disciplina.grade}
+            date={DataHandler.dateReturn(disciplina.createdAt, disciplina.updatedAt)}
+            id={disciplina._id}
+            reRender={reRender}
+          />
         ))}
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal} currentBimestre={selectBimestre} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        currentBimestre={selectBimestre}
+        reRender={reRender}
+
+      />
     </section>
   );
 };

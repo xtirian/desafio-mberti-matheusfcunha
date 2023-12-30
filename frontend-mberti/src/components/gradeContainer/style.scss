@@ -32,6 +32,8 @@ form {
 
   @include mixin.typo_mob_emphasis;
 
+  color: inherit;
+
   input {
     max-width: 50px;
 
@@ -43,7 +45,7 @@ form {
 
     background: none;
     border: none;
-    color: $txt_secondary;
+    color: inherit;
 
     outline: none;
 
@@ -52,4 +54,16 @@ form {
     font-size:1.4rem;
     font-weight: 400;
   }
+}
+
+.grade_container.good{
+  color: #05FF00 ;
+}
+
+.grade_container.average{
+  color: #FFFF99 ;
+}
+
+.grade_container.bad{
+  color: #FF5964 ;
 }

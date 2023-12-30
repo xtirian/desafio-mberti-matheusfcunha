@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import "./style.scss";
+import { ApiHandle } from "@/services/ApiHandle";
 
 //TODO - COLOCAR FUNÇÕES NOS BOTÕES
 interface ButtonFunction {
   openModal?: Function;
-  deleteCard?: Function;
 }
 
 export const AddButton = ({ openModal }: ButtonFunction) => {
@@ -25,12 +25,26 @@ export const AddButton = ({ openModal }: ButtonFunction) => {
   );
 };
 
-export const DeleteButton = () => {
+interface deleteType{
+  id: string
+  reRender: Function
+}
+
+export const DeleteButton = ({id, reRender}:deleteType) => {
   return (
     <button
       className="custom_button delete"
       title="Clique para deletar um uma nova nota"
       aria-label="Clique para deletar um uma nova nota"
+      onClick={() => {
+        let result = confirm("tem certeza que deseja deletar este item?")
+
+        if(result){
+          ApiHandle.deleteGrade({id})
+          alert("deletamos")
+          reRender()
+        }
+      }}
     >
       <Image src="/Trash.svg" width={32} height={32} alt={"Delete button"} />
     </button>
@@ -38,7 +52,6 @@ export const DeleteButton = () => {
 };
 
 export const ConfirmButton = () => {
-  // MODDAL
 
   return (
     <button type="submit"

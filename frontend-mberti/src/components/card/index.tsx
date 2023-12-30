@@ -6,32 +6,37 @@ import GradeContainer from "../gradeContainer";
 
 
 interface SubjectInterface {
-  disciplina: string,
-  nota?: number
+  id: string,
+  name: string,
+  nota: number,
+  date?: string
+  reRender: Function
 }
 
-export const SubjectCard = () => {
+export const SubjectCard = (data : SubjectInterface) => {
  
 
   return (
-    <div className={`card_container biologia`}>
-      <h2 className="card_title">Biologia</h2>
-      <p className="card_text">28/04/2022</p>
-      <DeleteButton />
-      <GradeContainer />
+    <div className={`card_container ${data.name.toLowerCase()}`}>
+      <h2 className="card_title">{data.name}</h2>
+      <p className="card_text">{data.date}</p>
+      <DeleteButton id={data.id} reRender={data.reRender} />
+      <GradeContainer grade={data.nota} id={data.id} />
     </div>
   );
 };
 
 
+interface SubjectInputInterface {
+  name: string,
+}
 
-export const SubjectInputCard = ({disciplina}:SubjectInterface) => {
+export const SubjectInputCard = ({name}:SubjectInputInterface) => {
  
-  const disciplinaClass = disciplina.toLowerCase()
 
   return (
-    <div className={`card_input_container ${disciplina.toLowerCase()}`}>
-      <h2 className="card_title">{disciplina}</h2>
+    <div className={`card_input_container ${name.toLowerCase()}`}>
+      <h2 className="card_title">{name}</h2>
     </div> 
   );
 };
