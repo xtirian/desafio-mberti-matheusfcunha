@@ -15,11 +15,11 @@ const doc = {
     },
     servers: [
         {
-            url: "http://localhost:8080",
+            url: `${process.env.URL}`,
             description: "Develop server"
         },
         {
-            url: "", //TODO: update after we have the deploy
+            url: `${process.env.URL}`, //TODO: update after we have the deploy
             description: "Production server"
         }
     ],

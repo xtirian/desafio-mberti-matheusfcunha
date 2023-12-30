@@ -8,7 +8,7 @@
     "servers": [
         {
             "url": "http://localhost:8080",
-            "description": "Servidor localhost."
+            "description": "Servidor Develop."
         },
         {
             "url": "",
@@ -16,7 +16,7 @@
         }
     ],
     "paths": {
-        "/users/": {
+        "/results/": {
             "get": {
                 "description": "",
                 "responses": {
