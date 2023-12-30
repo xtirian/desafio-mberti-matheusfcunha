@@ -1,0 +1,44 @@
+@use "../../sass/mixin";
+@use "../../sass/var" as *;
+
+.custom_button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 12px;
+
+  
+    svg:hover {
+      color: #fff;
+      path {
+        fill: currentColor;
+      }
+    }
+  
+}
+
+.add {
+  width: 58px;
+  height: 37px;
+  background-color: $vi_primary_act;
+
+  gap: 10px;
+
+  @include mixin.tablet_query {
+    width: 183px;
+  }
+
+  .text {
+    @include mixin.typo_tab_button;
+  }
+}
+
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+}
