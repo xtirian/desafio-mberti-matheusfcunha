@@ -42,16 +42,35 @@ const postController = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
             message: `Please, insert a grade between 0 and 10`,
         });
     }
+    //VALIDATIONG IF IT ALREADY EXIST
+    let checkTest = yield checkDB(bimestre, disciplina);
+    if (checkTest) {
+        return res.status(406).send({
+            message: `${disciplina} already exist in ${bimestre} BIMESTRE`,
+        });
+    }
     try {
         const DisciplinaCriada = yield result_schema_1.default.create({
             name: disciplina,
             bimestre: bimestre,
             grade: nota,
         });
-        return res.status(200).json(DisciplinaCriada);
+        DisciplinaCriada.save();
+        return res.status(201).json(DisciplinaCriada);
     }
     catch (error) {
         console.error(error);
     }
 });
 exports.postController = postController;
+const checkDB = (bimestre, disciplina) => __awaiter(void 0, void 0, void 0, function* () {
+    let filter = { name: disciplina, bimestre: bimestre };
+    try {
+        if (yield result_schema_1.default.findOne(filter)) {
+            return true;
+        }
+    }
+    catch (error) {
+        return false;
+    }
+});
