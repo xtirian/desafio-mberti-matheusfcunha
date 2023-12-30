@@ -41,6 +41,16 @@ export const postController = async (
     });
   }
 
+  //VALIDATIONG IF IT ALREADY EXCIST
+  let checkTest = await checkDB(bimestre, disciplina);
+
+  
+  if (checkTest) {
+    return res.status(406).send({
+      message: `${disciplina} already exist in ${bimestre} BIMESTRE`,
+    });
+  }
+
   try {
     const DisciplinaCriada = await DisciplinaModel.create({
       name: disciplina,
@@ -52,6 +62,21 @@ export const postController = async (
 
     return res.status(201).json(DisciplinaCriada);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
+};
+
+const checkDB = async (bimestre: string, disciplina: string) => {
+  let filter = { name: disciplina, bimestre: bimestre };
+
+  console.log("passou aqui");
+
+  try {
+    if (await DisciplinaModel.findOne(filter)) {
+      return true;
+    }
+  } catch (error) {    
+    return false;
+  }
+
 };
