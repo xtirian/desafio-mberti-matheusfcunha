@@ -34,20 +34,32 @@ export const AddButton = () => {
     }; // IMPORTANT SO IT DON'T CAUSE A LOOP
   }, [isClient]); // SO IT ATT EVERY CHANGE ON SCREEN
 
+
+  // MODDAL
+
+  
+
   return (
-    <button className="custom_button add">
-      {windowSize.width >= 768 && <p className="text">Lançar nota</p>}
-      <Image src="/Plus.svg" width={32} height={32} alt={"Add button"} />
-    </button>
+    <>
+      {windowSize.width >= 768 ? (
+        <button className="custom_button add" title="Clique para adicionar um uma nova nota" aria-label="Clique para adicionar um uma nova nota">
+          <p className="text">Lançar nota</p>{" "}
+          <Image src="/Plus.svg" width={32} height={32} alt={"Add button"} />{" "}
+        </button>
+      ) : (
+        <button className="custom_button add" title="Clique para adicionar um uma nova nota" aria-label="Clique para adicionar um uma nova nota">
+          <p></p>
+          <Image src="/Plus.svg" width={32} height={32} alt={"Add button"} />
+        </button>
+      )}
+    </>
   );
 };
 
-
 export const DeleteButton = () => {
-
   return (
-    <button className="custom_button delete">
+    <button className="custom_button delete" title="Clique para deletar um uma nova nota" aria-label="Clique para deletar um uma nova nota">
       <Image src="/Trash.svg" width={32} height={32} alt={"Delete button"} />
     </button>
-  )
-}
+  );
+};
