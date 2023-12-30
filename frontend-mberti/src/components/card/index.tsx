@@ -4,7 +4,13 @@ import "./styles.scss";
 import { DeleteButton } from "../button";
 import GradeContainer from "../gradeContainer";
 
-const SubjectCard = () => {
+
+interface SubjectInterface {
+  disciplina: string,
+  nota?: number
+}
+
+export const SubjectCard = () => {
  
 
   return (
@@ -17,4 +23,15 @@ const SubjectCard = () => {
   );
 };
 
-export default SubjectCard;
+
+
+export const SubjectInputCard = ({disciplina}:SubjectInterface) => {
+ 
+  const disciplinaClass = disciplina.toLowerCase()
+
+  return (
+    <div className={`card_input_container ${disciplina.toLowerCase()}`}>
+      <h2 className="card_title">{disciplina}</h2>
+    </div> 
+  );
+};
