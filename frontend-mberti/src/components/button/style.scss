@@ -10,14 +10,12 @@
   cursor: pointer;
   border-radius: 12px;
 
-  
-    svg:hover {
-      color: #fff;
-      path {
-        fill: currentColor;
-      }
+  svg:hover {
+    color: #fff;
+    path {
+      fill: currentColor;
     }
-  
+  }
 }
 
 .add {
@@ -27,12 +25,17 @@
 
   gap: 10px;
 
-  @include mixin.tablet_query {
-    width: 183px;
-  }
-
   .text {
     @include mixin.typo_tab_button;
+    display: none;
+  }
+
+  @include mixin.tablet_query {
+    width: 183px;
+
+    .text {
+      display: flex;
+    }
   }
 }
 
@@ -41,4 +44,23 @@
   top: 0;
   right: 0;
   transform: translateX(100%);
+}
+
+.formSubmit {
+  width: 134px;
+  height: 48px;
+
+  align-self: flex-end;
+
+  padding: 16px 32px;
+
+  background-color: $vi_primary_act;
+
+  .text {
+    @include mixin.typo_tab_button;
+  }
+
+  @include mixin.tablet_query {
+    width: 183px;
+  }
 }
