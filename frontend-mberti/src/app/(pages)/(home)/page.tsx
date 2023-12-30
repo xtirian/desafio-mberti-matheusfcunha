@@ -1,8 +1,6 @@
 'use client'
 import './style.scss'
 import SubjectContainer from '@/components/subject'
-import Modal from '@/view/modal'
-import { useState } from 'react'
 
 export default function Home() {
 
@@ -12,17 +10,6 @@ export default function Home() {
     elementos.push(<SubjectContainer key={i} selectBimestre={i} />)
   }
 
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <main className='mainContainer'>
       {/* TODO: COLOCAR O LOADING NO FINAL */}
@@ -30,9 +17,6 @@ export default function Home() {
       {elementos}
 
       {/* MODAL */}
-
-      <Modal isOpen={isModalOpen} onClose={() => closeModal} />
-
      
     </main>
   )
