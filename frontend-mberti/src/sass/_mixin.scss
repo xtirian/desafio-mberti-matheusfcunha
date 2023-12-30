@@ -10,7 +10,7 @@
   line-height: 1.8rem;
 }
 @mixin typo_mob_h2 {
-  color: $txt_secondary;
+  color: $txt_primary;
   font-size: 1.8rem;
   font-weight: 500;
   line-height: 1.8rem;
@@ -22,8 +22,23 @@
   line-height: 1.2rem;
 }
 @mixin typo_mob_emphasis {
-  color: $txt_primary;
+  color: $txt_secondary;
   font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.2rem;
+}
+
+// TABLET
+@mixin typo_tab_button {
+  color: $bg_color;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.6rem;
+}
+
+//QUERIES
+@mixin tablet_query {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
 }
