@@ -24,8 +24,6 @@ export default function Home() {
     callAfterUpdate(); // Chama a função dentro do useEffect
   }, []); // A execução ocorre uma vez, sem dependências
 
-  console.log(dataAPI);
-
   return (
     <main className="mainContainer">
       <SubjectContainer
