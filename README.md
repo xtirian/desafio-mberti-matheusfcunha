@@ -2,6 +2,8 @@
 
 Documentação do projeto criado para atender ao teste técnico enviado pela equipe da Monteiro Berti Psicologia, para a vaga de Desenvolvedor Júnior.
 
+**Importante**: Como estou usando serviços gratuitos de deploy e Banco de Dados, o backend entra em standby caso não tenha requisições. Por isso, abra primeiro o backend só para garantir que o servidor deu start na aplicação.
+
 ## Conteúdo
 - [Backend](#backend)
   - Tecnologias usadas
@@ -70,8 +72,8 @@ Para deletar a nota, basta clicar na lixeira.
 - Axios - Promise-based HTTP Client for node.js
 
 ### Links
-Repositório: [Backend - Repositorio GitHub](https://github.com/xtirian/desafio-mberti-matheusfcunha/tree/main/backend-mberti)
-Deploy: [Backend - Teste Tecnico](https://backend-testetecnico.onrender.com)
+Repositório: [Backend - Repositorio GitHub](https://github.com/xtirian/desafio-mberti-matheusfcunha/tree/main/frontend-mberti)
+Deploy: [Backend - Teste Tecnico](https://desafio-mberti-matheusfcunha.vercel.app/)
 
 ### Inicializando o projeto
 
@@ -101,3 +103,5 @@ Caso queira dar uma olhada em outros trabalhos, estes são meus últimos trabalh
 - [Github user app](https://github-user-search-pi-fawn.vercel.app/) - aplicação Front-end
 - [Buscador de CEP](https://buscador-cep-frontend.vercel.app/)- aplicação Full-stack
 - [Portifolio](https://xtirian-portfolio.vercel.app/) - Aplicação Front-end
+
+Desde já, muito obrigado.
