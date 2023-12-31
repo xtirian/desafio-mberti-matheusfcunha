@@ -15,7 +15,7 @@ dotenv.config();
 
 // SWAGGER CONFIG
 import swaggerUI from "swagger-ui-express";
-import swaggerFile from "./documentation/swagger_output.json";
+import swaggerFile from './documentation/swagger_output.json';
 const swaggerOptions = { customCssUrl: "swagger-ui.css" };
 
 
