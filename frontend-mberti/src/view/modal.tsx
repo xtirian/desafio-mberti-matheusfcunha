@@ -46,6 +46,7 @@ const Modal = ({ isOpen, onClose, currentBimestre, reRender }: ModalTypes) => {
             
               ApiHandle.createNewGrade(result);
               onClose();
+              alert("Adicionado com sucesso")
               reRender();
             
           }}
