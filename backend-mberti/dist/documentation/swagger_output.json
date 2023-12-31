@@ -1,0 +1,30 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "API do BoardTasks",
+        "description": "documentação da API do BoardTasks."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Servidor Develop."
+        },
+        {
+            "url": "",
+            "description": "Servidor de produção."
+        }
+    ],
+    "paths": {
+        "/results/": {
+            "get": {
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

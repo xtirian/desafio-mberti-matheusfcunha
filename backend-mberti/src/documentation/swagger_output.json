@@ -1,0 +1,143 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Teste Técnico - Matheus F Cunha",
+    "description": "Documentação das rotas referentes ao Teste Técnico enviado pela Monteiro Berti Psicologia."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Servidor Develop."
+    },
+    {
+      "url": "",
+      "description": "Servidor de produção."
+    }
+  ],
+  "paths": {
+    "/results/": {
+      "get": {
+        "summary": "Retorna todos os registrados",
+        "description": "Retorna todos os resultados do Banco de Dados",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+
+      "post": {
+        "description": "Cria uma nova disciplina com uma nota e bimestre único",
+        "summary": "Cria uma nova disciplina com uma nota e bimestre único",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "DisciplinaModel",
+            "type":"object",
+            "required": true,
+            "schema": {
+              "$ref": "#/database/module/result.schema"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "filters": {
+                  "Data undefined": "Couldn't handle this request. Verify the if all fields was filleds",
+                  "Invalid Data": "You can't make this request for the 'Data Name: ${data}'. The 'Data Name' alloweds are ${dataEnum}",
+                  "Outrange Grade": "Please, insert a grade between 0 and 10"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "filters": {
+                  "Repeated Subject": "This Subject already exist in ${bimestre} BIMESTRE"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "definitions": {
+          "DisciplinaModel": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "bimestre": {
+                "type": "string"
+              },
+              "grade": {
+                "type": "number"
+              }
+            },
+            "required": ["name", "bimestre", "grade"]
+          }
+        }
+      },
+
+      "put": {
+        "description": "Atualiza a nota de um item específico",
+        "summary": "Atualiza a nota de um item específico",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "disciplinaId",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "grade",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "filters": {
+                  "grade": "Please, insert a grade between 0 and 10"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "delete": {
+        "summary": "Deleta uma disciplina de um bimestre específico",
+        "description": "Rota utilizada para deletar alguma nota relacionada a uma disciplina e a um bimestre",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "disciplinaId",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

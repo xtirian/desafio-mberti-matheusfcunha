@@ -1,0 +1,93 @@
+@use "../../sass/mixin";
+@use "../../sass/var" as *;
+
+.card_container {
+  position: relative;
+
+  max-width: 157px;
+  width: 45%;
+  height: 146px;
+  border-radius: 20px;
+
+  padding: 16px;
+  
+  display:flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  padding: 16px;
+
+  
+}
+
+
+.card_title{
+  @include mixin.typo_mob_h2
+}
+
+.card_text{
+  @include mixin.typo_mob_body 
+}
+
+.card_container.biologia{
+  background-color: $subj_bio_color;
+}
+
+.card_container.sociologia{
+  background-color: $subj_socio_color;
+}
+
+.card_container.artes{
+  background-color: $subj_art_color;
+}
+
+.card_container.geografia{
+  background-color: $subj_geo_color;
+}
+
+
+
+.card_input_container{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 20px;
+  cursor: pointer;
+  
+}
+
+.card_input_container.biologia{
+  background-color: $subj_bio_color_20;
+}
+
+.card_input_container.sociologia{
+  background-color: $subj_socio_color_20;
+}
+
+.card_input_container.artes{
+  background-color: $subj_art_color_20;
+}
+
+.card_input_container.geografia{
+  background-color: $subj_geo_color_20;
+}
+
+input[type="radio"]:checked ~ .biologia{
+  background-color: $subj_bio_color;
+}
+
+input[type="radio"]:checked ~ .sociologia{
+  background-color: $subj_socio_color;
+}
+
+input[type="radio"]:checked ~ .artes{
+  background-color: $subj_art_color;
+}
+
+input[type="radio"]:checked ~ .geografia{
+  background-color: $subj_geo_color;
+}

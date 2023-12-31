@@ -1,0 +1,69 @@
+@use "../../sass/mixin";
+@use "../../sass/var" as *;
+
+.grade_container {
+  position: absolute;
+
+  left: 0;
+  bottom: 21px;
+
+  display: flex;
+  background-color: $bg_color_70;
+  align-items: center;
+  gap: 6.43px;
+
+  width: 100%;
+  max-width: 157px ;
+  height: 30px;
+  padding-left: 13.82px ;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grade_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  @include mixin.typo_mob_emphasis;
+
+  color: inherit;
+
+  input {
+    max-width: 50px;
+
+    height: 18px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+
+    background: none;
+    border: none;
+    color: inherit;
+
+    outline: none;
+
+    @include mixin.typo_mob_emphasis;
+
+    font-size:1.4rem;
+    font-weight: 400;
+  }
+}
+
+.grade_container.good{
+  color: #05FF00 ;
+}
+
+.grade_container.average{
+  color: #FFFF99 ;
+}
+
+.grade_container.bad{
+  color: #FF5964 ;
+}
