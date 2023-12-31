@@ -15,12 +15,14 @@ interface ModalTypes {
 }
 
 const Modal = ({ isOpen, onClose, currentBimestre, reRender }: ModalTypes) => {
-  if (!isOpen) return null;
-
   const [Disciplina, setDisciplina] = useState("");
   const [Nota, setNota] = useState(0);
   const Bimestre = DataHandler.bimestreFilter(currentBimestre);
 
+
+  if (!isOpen) return null;
+
+  
   // FOR RENDER
   const disciplinas = ["Biologia", "Artes", "Geografia", "Sociologia"];
 
