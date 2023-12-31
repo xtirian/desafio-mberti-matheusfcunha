@@ -1,7 +1,7 @@
 import axios from "axios";
 import { deleteType, getType, postType, putType } from "./types.interface";
 
-let baseURL = "http://localhost:8080/results";
+let baseURL = "https://backend-testetecnico.onrender.com/results";
 
 export class ApiHandle {
   //GET
