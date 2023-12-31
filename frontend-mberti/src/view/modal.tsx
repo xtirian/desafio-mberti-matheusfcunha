@@ -19,10 +19,8 @@ const Modal = ({ isOpen, onClose, currentBimestre, reRender }: ModalTypes) => {
   const [Nota, setNota] = useState(0);
   const Bimestre = DataHandler.bimestreFilter(currentBimestre);
 
-
   if (!isOpen) return null;
 
-  
   // FOR RENDER
   const disciplinas = ["Biologia", "Artes", "Geografia", "Sociologia"];
 
@@ -37,7 +35,7 @@ const Modal = ({ isOpen, onClose, currentBimestre, reRender }: ModalTypes) => {
         </div>
         <form
           className="modal-content"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
 
             const result = {
@@ -45,12 +43,16 @@ const Modal = ({ isOpen, onClose, currentBimestre, reRender }: ModalTypes) => {
               bimestre: Bimestre,
               grade: Nota,
             };
-            
-              ApiHandle.createNewGrade(result);
+
+            const {data} = await ApiHandle.createNewGrade(result);
+
+            console.log(data)
+
+            if (data != undefined) {
               onClose();
-              alert("Adicionado com sucesso")
+              alert("Adicionado com sucesso");
               reRender();
-            
+            }
           }}
         >
           <h4
@@ -77,16 +79,19 @@ const Modal = ({ isOpen, onClose, currentBimestre, reRender }: ModalTypes) => {
             ))}
           </div>
           <div className="modal-nota">
-            <p>Nota</p>
+            <p title="Adicione uma nota" aria-label="Adicione uma nota">Nota</p>
             <label className="nota_container">
               <input
                 type="number"
                 step={0.1}
                 placeholder="7.4"
+                min={0}
+                max={10}
                 onChange={(e) => {
                   const inputValue = Number(e.target.value);
                   setNota(inputValue);
                 }}
+                required
               />
             </label>
           </div>

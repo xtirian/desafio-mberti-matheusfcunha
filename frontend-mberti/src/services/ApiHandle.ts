@@ -48,20 +48,19 @@ export class ApiHandle {
   //POST
 
   static async createNewGrade({ name, bimestre, grade }: postType) {
-    
-      await axios.post(baseURL, {
+    try {
+      const result = await axios.post(baseURL, {
         name: name,
         bimestre: bimestre,
         grade: grade,
-      }).catch( (error) => {
-        const result = error.response.data.message
-        alert(result);
-  
-        return;
-      }) 
+      });
+      return result;
+    } catch (error:any) {
+      const result = error.response.data.message;
+      alert(result);
 
-      return;
-    
+      return result;
+    }
   }
 
   //PUT
@@ -69,9 +68,9 @@ export class ApiHandle {
   static async updateGrade({ id, grade }: putType) {
     try {
       await axios.put(`${baseURL}/${id}`, {
-        data:{
-        grade: grade,
-        }
+        data: {
+          grade: grade,
+        },
       });
 
       return;
