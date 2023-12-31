@@ -55,7 +55,7 @@ export class ApiHandle {
         grade: grade,
       });
       return result;
-    } catch (error) {
+    } catch (error:any) {
       const result = error.response.data.message;
       alert(result);
 
